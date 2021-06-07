@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Color Theme */
+:root {
+  --color1: #f9fbe7;
+  --color2: #fff9c4;
+  --color3: #e6ee9c;
+  --color4: #cddc39;
+  --color5: #afb42b;
+  --color6: #827717;
+  --color7: #eeff41;
+  --color8: #aeea00;
+}
+
+body {
+  background-color: var(--color1);
+  /* background-color: black; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* App Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header .app-title {
+  font-size: 30px;
+  margin-left: 15px;
+  color: var(--color8);
+}
+
+.app-header .search-bar {
+  margin-right: 15px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  background-color: var(--color7);
+  box-shadow: 0px 2px 5px var(--color8);
+  color: var(--color6);
+  font-weight: bold;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+/* Article Card */
+.article-intro {
+  width: 90%;
+  margin: auto;
+  padding: 1em 0;
+  color: var(--color5);
+}
+
+.article-container {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.article-card {
+  /* border: 1px solid var(--color8); */
+  box-shadow: -1px 1px 1px var(--color8);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.article-card img {
+  width: 100%;
+}
+
+.article-card h2 {
+  color: var(--color8);
+  /* text-align: center; */
+  width: 95%;
+  margin: auto;
+  font-size: 18px;
+}
+.article-card p {
+  width: 95%;
+  margin: auto;
+  font-size: 13px;
+}
+.article-card h6 {
+  text-align: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  color: var(--color6);
+}
+
+/* Media Queries for article-card */
+@media (max-width: 500px) {
+  .article-container {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 900px) {
+  .article-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* App-Footer */
+.app-footer {
+  margin-top: 3em;
+  background-color: var(--color5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.app-footer li {
+  list-style: none;
+}
+
+.app-footer-lists h2 {
+  color: var(--color1);
+  font-size: 24px;
+  text-align: center;
+}
+.app-footer-lists p {
+  font-size: 20px;
+  color: var(--color1);
+  letter-spacing: 2px;
+  margin-top: -10px;
+}
+.app-footer-lists li {
+  font-size: 18px;
+  color: var(--color2);
+  text-align: center;
+  font-weight: bold;
+}
+
+.app-footer-social ul {
+  display: flex;
+  justify-content: center;
+}
+
+.app-footer-social p {
+  color: var(--color1);
+}
+
+.app-footer-social a {
+  text-decoration: none;
+  color: var(--color7);
+}
