@@ -157,3 +157,49 @@ body {
   text-decoration: none;
   color: var(--color7);
 }
+
+/* App-Login */
+.app-login {
+  display: grid;
+  place-items: center;
+  height: 52.5vh;
+  width: 80%;
+  margin: auto;
+  box-shadow: 2px 2px 5px 1px var(--color8);
+  margin-top: 2em;
+  border-radius: 5px;
+}
+
+.app-login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-login label {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--color5);
+}
+
+.app-login input {
+  padding: 0.5em 1em;
+  margin: 0.5em 1em;
+  border: 1px solid var(--color3);
+  width: 250px;
+  border-radius: 5px;
+}
+
+.app-login input:focus {
+  outline: none;
+  border: 1px solid var(--color4);
+}
+
+.app-login input::placeholder {
+  color: var(--color5);
+  letter-spacing: 0.1em;
+}
+
+.app-login input[type="submit"] {
+  background: linear-gradient(to right, var(--color4), var(--color5));
+}

@@ -2,19 +2,17 @@ import React from "react";
 import Reactdom from "react-dom";
 
 // Components Import
-import Header from "./Components/Header";
-import Main from "./Components/MainPage";
-import Footer from "./Components/Footer";
 
+import Main from "./Components/MainPage";
+// import Login from "./Components/WriterLogin";
 //Stylesheet
 import "./index.css";
 
 const App = () => {
   return (
     <>
-      <Header />
+      {/* <Login /> */}
       <Main />
-      <Footer />
     </>
   );
 };

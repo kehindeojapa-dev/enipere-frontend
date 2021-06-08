@@ -2,10 +2,15 @@ import React from "react";
 
 import Data from "../Data/sample1";
 
+// Components Import
+import Header from "./Header";
+import Footer from "./Footer";
+
 import defaultImage from "../Images/pad.jpg";
 const MainPage = () => {
   return (
     <>
+      <Header />
       <section className="article-intro">
         <h2>Articles for you</h2>
       </section>
@@ -21,6 +26,7 @@ const MainPage = () => {
           );
         })}
       </section>
+      <Footer />
     </>
   );
 };
