@@ -74,6 +74,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 }
 
 .article-card img {
@@ -202,4 +203,54 @@ body {
 
 .app-login input[type="submit"] {
   background: linear-gradient(to right, var(--color4), var(--color5));
+  color: var(--color1);
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+.app-login input[type="submit"]:hover {
+  /* box-shadow: 1px 2px 1px 5px var(--color5); */
+  box-shadow: 1px 1px 3px 1px var(--color8);
+}
+
+/* WriterPage */
+.writerPage-intro {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: var(--color8);
+}
+.writerPage-intro img {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.writerPage-deleteBtn {
+  position: absolute;
+  top: 0;
+  background-color: rgb(240, 64, 64);
+  border: none;
+  padding: 5px;
+}
+
+.upload {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+.uploadBtn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.6em 1em;
+  background-color: var(--color5);
+  color: var(--color1);
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.uploadBtn:hover {
+  background-color: var(--color4);
 }

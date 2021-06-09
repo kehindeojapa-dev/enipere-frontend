@@ -3,15 +3,16 @@ import Reactdom from "react-dom";
 
 // Components Import
 
-import Main from "./Components/MainPage";
-// import Login from "./Components/WriterLogin";
+// import Main from "./Components/MainPage";
+// import Main from "./Components/WriterLogin";
+import Main from "./Components/WriterPage";
+
 //Stylesheet
 import "./index.css";
 
 const App = () => {
   return (
     <>
-      {/* <Login /> */}
       <Main />
     </>
   );
