@@ -5,8 +5,8 @@ import Reactdom from "react-dom";
 
 // import Main from "./Components/MainPage";
 // import Main from "./Components/WriterLogin";
-import Main from "./Components/WriterPage";
-
+// import Main from "./Components/WriterPage";
+import Main from "./Components/Post";
 //Stylesheet
 import "./index.css";
 

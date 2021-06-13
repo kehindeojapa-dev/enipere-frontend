@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-
+import UploadForm from "./Upload";
 import defaultImage from "../Images/pad.jpg";
 import Data from "../Data/sample1";
 
 const Upload = () => {
-  const [status, setStatus] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [buttonContent, setButtonContent] = useState("Upload Post");
   const showUpload = () => {
-    setStatus(!status);
+    setShowForm(!showForm);
+    if (buttonContent === "Upload Post") {
+      setButtonContent("Cancel");
+    } else {
+      setButtonContent("Upload Post");
+    }
   };
 
   return (
     <>
       <div className="upload">
         <button className="uploadBtn" onClick={showUpload}>
-          Upload Post
+          {buttonContent}
         </button>
-        {status && <h2>Hello</h2>}
+        {showForm && <UploadForm />}
       </div>
     </>
   );
