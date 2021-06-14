@@ -300,3 +300,107 @@ body {
 .uploadForm input[type="submit"]:hover {
   background-color: var(--color5);
 }
+
+/* Post Container */
+.postContainer {
+  width: 90%;
+  margin: auto;
+}
+.postContainer-title {
+  width: 90%;
+  text-align: center;
+  font-size: 30px;
+}
+.postContainer-title span {
+  font-size: 10px;
+  color: var(--color6);
+  letter-spacing: 0.1em;
+}
+
+.postContainer img {
+  display: block;
+  width: 80%;
+  height: 250px;
+  margin: auto;
+  object-fit: cover;
+}
+
+.postContainer-message {
+  margin: 1em 0;
+  text-align: justify;
+  letter-spacing: 0.02em;
+}
+
+/* Comment Section */
+.commentContainer {
+  background-color: var(--color2);
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  /* border: 1px solid var(--color8); */
+  border-radius: 5px;
+  padding: 0.5em 0.5em;
+  box-shadow: 0px 5px 10px 0px var(--color5);
+}
+
+.commentBtn {
+  border: none;
+  background-color: var(--color6);
+  padding: 0.5em;
+  color: var(--color1);
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+}
+.commentForm input {
+  background-color: var(--color1);
+  outline-width: 0;
+  padding: 0.2em;
+  border-radius: 5px;
+  border: 1px solid var(--color5);
+}
+.commentForm textarea {
+  margin-top: 0.5em;
+  outline: none;
+  padding: 0.3em;
+  resize: none;
+  border-radius: 5px;
+  border: 1px solid var(--color5);
+}
+.commentForm input[type="submit"] {
+  margin-top: 0.5em;
+  background-color: var(--color6);
+  color: var(--color1);
+  font-weight: bold;
+  padding: 0.3em;
+  border: none;
+  transition: all 0.2s ease-in;
+}
+.commentForm input[type="submit"]:hover {
+  box-shadow: 2px 2px 5px 0px var(--color8);
+}
+
+.commentForm .row1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.commentItem {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+.commentItem-box1 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-items: space-between;
+}
