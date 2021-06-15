@@ -56,7 +56,7 @@ const Comments = (props) => {
                 <h2>{comment.name}</h2>
                 <p>{comment.email}</p>
               </div>
-              <p>{comment.message}</p>
+              <p className="commentItem-message">{comment.message}</p>
             </section>
           </div>
         );
