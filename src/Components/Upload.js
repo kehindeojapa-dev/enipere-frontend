@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "../axios";
 const Upload = () => {
   //State for each input field
@@ -6,38 +6,89 @@ const Upload = () => {
   const [author, setAuthor] = useState("");
   const [brief, setBrief] = useState("");
   const [format, setFormat] = useState("");
-  const [docFile, setDocFile] = useState();
-  const [cover, setCover] = useState();
-  const [imgFile, setImgFile] = useState();
+  const [docFile, setDocFile] = useState({});
+  const [cover, setCover] = useState({});
+  const [imgFile, setImgFile] = useState({});
+  const el = useRef();
 
-  const [formatChoice, setFormatChoice] = useState(true);
-  const formatType = (e) => {
-    if (e.target.value === "image") {
-      setFormatChoice(false);
-    } else {
-      setFormatChoice(true);
-    }
-  };
+  const [docFormat, setDocFormat] = useState(false);
+  const [imgFormat, setImgFormat] = useState(false);
 
   const [files, setFiles] = useState({
-    title: "Hello",
-    author: "how",
-    brief: "are",
-    format: "you",
-    docFile: "doing",
-    cover: "today",
-    imgFile: "myfriend",
+    title: "",
+    author: "",
+    brief: "",
+    format: "",
   });
 
   useEffect(() => {
     setFiles({ ...files, title, author, brief, format });
   }, [title, author, brief, format]);
 
-  const fetchFile = async (e) => {
+  const handleDoc = (e) => {
+    const file = e.target.files[0];
+    setDocFile(file);
+  };
+
+  const handleCover = (e) => {
+    const file = e.target.files[0];
+    setCover(file);
+  };
+
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setImgFile(file);
+  };
+
+  const showFile = (e) => {
+    if (e.target.value === "doc") {
+      setDocFormat(true);
+      setImgFormat(false);
+      setImgFile({});
+    } else if (e.target.value === "image") {
+      setImgFormat(true);
+      setDocFormat(false);
+      setDocFile({});
+      setCover({});
+    } else {
+      setImgFormat(false);
+      setDocFormat(false);
+      setDocFile({});
+      setCover({});
+      setImgFile({});
+    }
+  };
+
+  const uploadFile = async (e) => {
     e.preventDefault();
-    // console.log(files.format, files.docFile);
+
     //NOTE: Create error-handling here for uploading post.
-    await axios.post("/server", files);
+
+    const formdata = new FormData();
+    if (
+      title !== "" &&
+      author !== "" &&
+      brief !== "" &&
+      format !== "" &&
+      ((docFile.name !== undefined && cover.name !== undefined) ||
+        imgFile.name !== undefined)
+    ) {
+      if (files.format === "doc") {
+        formdata.append("doc", docFile);
+        formdata.append("cover", cover);
+      } else {
+        formdata.append("image", imgFile);
+      }
+      formdata.append("details", JSON.stringify(files));
+      await axios.post("/server", formdata);
+
+      setTitle("");
+      setAuthor("");
+      setBrief("");
+      setFormat("");
+      setImgFormat(false);
+      setDocFormat(false);
+    }
   };
 
   return (
@@ -75,31 +126,45 @@ const Upload = () => {
         <label htmlFor="Format">Select Format</label>
         <select
           name="format"
-          onClick={(e) => formatType(e)}
           value={format}
-          onChange={(e) => setFormat(e.target.value)}
+          onChange={(e) => {
+            setFormat(e.target.value);
+            showFile(e);
+          }}
         >
           <option>Pick format</option>
           <option value="doc">Doc</option>
           <option value="image">Image</option>
         </select>
-        {formatChoice ? (
+        {docFormat && (
           <>
             <input
               type="file"
               name="doc"
               accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               required
-              value={docFile}
-              onChange={(e) => console.log(e)}
+              ref={el}
+              onChange={handleDoc}
             />
-            <label htmlFor="cover">Cover(optional)</label>
-            <input type="file" name="cover" accept=".jpg, .jpeg, .png" />
+            <label htmlFor="cover">Cover</label>
+            <input
+              type="file"
+              name="cover"
+              accept=".jpg, .jpeg, .png"
+              onChange={handleCover}
+            />
           </>
-        ) : (
-          <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
         )}
-        <input type="submit" value="Post" onClick={fetchFile} />
+        {imgFormat && (
+          <input
+            type="file"
+            name="image"
+            accept=".jpg, .jpeg, .png"
+            required
+            onChange={handleImage}
+          />
+        )}
+        <input type="submit" value="Post" onClick={uploadFile} />
       </form>
     </>
   );

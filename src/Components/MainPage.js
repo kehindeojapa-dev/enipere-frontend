@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../axios";
 
 import Data from "../Data/sample1";
 
@@ -8,6 +9,14 @@ import Footer from "./Footer";
 
 import defaultImage from "../Images/pad.jpg";
 const MainPage = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    axios.get("/server").then((response) => {
+      setPosts(response.data);
+    });
+  }, []);
+
   return (
     <>
       <Header />
@@ -15,12 +24,12 @@ const MainPage = () => {
         <h2>Articles for you</h2>
       </section>
       <section className="article-container">
-        {Data.map(({ id, Intro, Author, Title }) => {
+        {posts.map(({ id, Brief, Author, Title, cover }) => {
           return (
             <div key={id} className="article-card">
-              <img src={defaultImage} alt={Title} />
+              <img src={cover} alt={Title} />
               <h2>{Title}</h2>
-              <p>{Intro}</p>
+              <p>{Brief}</p>
               <h6>{Author}</h6>
             </div>
           );
