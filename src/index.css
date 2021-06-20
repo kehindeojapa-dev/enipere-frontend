@@ -100,6 +100,11 @@ body {
   color: var(--color6);
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Media Queries for article-card */
 @media (max-width: 500px) {
   .article-container {

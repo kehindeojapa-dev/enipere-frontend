@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
+import axios from "../axios";
+import { useParams } from "react-router-dom";
+
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -68,6 +71,8 @@ const Comments = (props) => {
 const Main = (props) => {
   const { Title, Author, Intro } = props.post;
   const Comment = props.comment;
+
+  console.log(useParams());
 
   //States
   const [switchComment, setSwitchComment] = useState(false);
