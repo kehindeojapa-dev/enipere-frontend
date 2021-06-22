@@ -164,7 +164,7 @@ a {
   color: var(--color7);
 }
 
-/* App-Login */
+/* App-Login App-SignUp*/
 .app-login {
   display: grid;
   place-items: center;
@@ -216,6 +216,15 @@ a {
 .app-login input[type="submit"]:hover {
   /* box-shadow: 1px 2px 1px 5px var(--color5); */
   box-shadow: 1px 1px 3px 1px var(--color8);
+}
+
+.passFail {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+.passSuccess {
+  color: var(--color8);
 }
 
 /* WriterPage */

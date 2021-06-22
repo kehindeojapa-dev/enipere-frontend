@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Avatar } from "@material-ui/core";
 import axios from "../axios";
 import { useParams } from "react-router-dom";
@@ -6,11 +6,7 @@ import { useParams } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
-// Image import
-import defaultImage from "../Images/pad.jpg";
-
 // Data import
-import Data from "../Data/sample1";
 import commentData from "../Data/comment";
 
 // AddComment Component
@@ -69,13 +65,20 @@ const Comments = (props) => {
 };
 
 const Main = (props) => {
-  const { Title, Author, Intro } = props.post;
   const Comment = props.comment;
 
-  console.log(useParams());
+  const postID = useParams().id;
+  const el = useRef(null);
 
   //States
   const [switchComment, setSwitchComment] = useState(false);
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`/server/post/${postID}`)
+      .then((response) => setPost(response.data));
+  });
 
   //Function to toggle addComment Form
   const toggleComment = () => {
@@ -90,13 +93,17 @@ const Main = (props) => {
     <>
       <section className="postContainer">
         <h1 className="postContainer-title">
-          {Title}
-          <span>{Author}</span>
+          {post.Title}
+          <span>{post.Author}</span>
         </h1>
-        {defaultImage && <img src={defaultImage} alt="post" />}
+        {post.cover && <img src={post.cover} alt="post" />}
 
         <section className="postContainer-message">
-          <p>{Intro}</p>
+          <div ref={el}>
+            {useEffect(() => {
+              el.current.innerHTML = post.doc;
+            })}
+          </div>
         </section>
       </section>
 
@@ -121,7 +128,7 @@ const Post = () => {
   return (
     <>
       <Header />
-      <Main post={Data[0]} comment={commentData} />
+      <Main comment={commentData} />
       <Footer />
     </>
   );

@@ -8,6 +8,7 @@ import Main from "./Components/MainPage";
 import Login from "./Components/WriterLogin";
 import WriterPage from "./Components/WriterPage";
 import Post from "./Components/Post";
+import SignUp from "./Components/WriterSignup";
 //Stylesheet
 import "./index.css";
 
@@ -22,6 +23,9 @@ const App = () => {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
         </Route>
         <Route path="/writerPage">
           <WriterPage />
