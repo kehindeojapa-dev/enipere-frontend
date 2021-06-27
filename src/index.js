@@ -6,7 +6,6 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
 import Main from "./Components/MainPage";
 import Login from "./Components/WriterLogin";
-import WriterPage from "./Components/WriterPage";
 import Post from "./Components/Post";
 import SignUp from "./Components/WriterSignup";
 //Stylesheet
@@ -26,9 +25,6 @@ const App = () => {
         </Route>
         <Route path="/signup">
           <SignUp />
-        </Route>
-        <Route path="/writerPage">
-          <WriterPage />
         </Route>
         <Route path="/post/:id" children={<Post />}></Route>
       </Switch>

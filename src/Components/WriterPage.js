@@ -58,7 +58,8 @@ const Posts = () => {
   );
 };
 
-const WriterPage = () => {
+const WriterPage = (props) => {
+  console.log(props);
   return (
     <>
       <Header />
