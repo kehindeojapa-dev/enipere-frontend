@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "../axios";
-const Upload = () => {
+const Upload = ({ props }) => {
   //State for each input field
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
+  // const [author, setAuthor] = useState("");
   const [brief, setBrief] = useState("");
   const [format, setFormat] = useState("");
   const [docFile, setDocFile] = useState({});
@@ -20,10 +20,11 @@ const Upload = () => {
     brief: "",
     format: "",
   });
+  const author = props.username;
 
   useEffect(() => {
-    setFiles({ ...files, title, author, brief, format });
-  }, [title, author, brief, format]);
+    setFiles({ ...files, title, brief, format });
+  }, [title, brief, format]);
 
   const handleDoc = (e) => {
     const file = e.target.files[0];
@@ -61,13 +62,10 @@ const Upload = () => {
 
   const uploadFile = async (e) => {
     e.preventDefault();
-
     //NOTE: Create error-handling here for uploading post.
-
     const formdata = new FormData();
     if (
       title !== "" &&
-      author !== "" &&
       brief !== "" &&
       format !== "" &&
       ((docFile.name !== undefined && cover.name !== undefined) ||
@@ -80,10 +78,10 @@ const Upload = () => {
         formdata.append("image", imgFile);
       }
       formdata.append("details", JSON.stringify(files));
+      formdata.append("author", author);
       await axios.post("/server", formdata);
 
       setTitle("");
-      setAuthor("");
       setBrief("");
       setFormat("");
       setImgFormat(false);
@@ -103,17 +101,6 @@ const Upload = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label htmlFor="Author">Author</label>
-        <select
-          name="Author"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-        >
-          <option>Author</option>
-          <option value="Eniola">Eniola</option>
-          <option value="Piere">Piere</option>
-          <option value="Tolani">Tolani</option>
-        </select>
         <label htmlFor="Brief">Brief</label>
         <textarea
           name="Brief"

@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import {
-  Redirect,
-  Route,
-  Switch,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "../axios";
 import Header from "./Header";
 import Footer from "./Footer";
-import WriterPage from "./WriterPage";
 
 const Main = () => {
   const [username, setUsername] = useState("");
@@ -56,16 +50,10 @@ const Main = () => {
         </form>
         {loginStatus && (
           <>
-            <Redirect to="/writerPage" />
+            <Redirect to={`writerPage/${userData._id}`} />
           </>
         )}
       </div>
-
-      <Switch>
-        <Route exact path="/writerPage">
-          <WriterPage props={userData} />
-        </Route>
-      </Switch>
     </>
   );
 };
@@ -74,9 +62,7 @@ const loginApp = () => {
   return (
     <>
       <Header />
-      <Router>
-        <Main />
-      </Router>
+      <Main />
       <Footer />
     </>
   );

@@ -22,11 +22,12 @@ const MainPage = () => {
         <h2>Articles for you</h2>
       </section>
       <section className="article-container">
-        {posts.map(({ _id, id, Brief, Author, Title, cover }) => {
+        {posts.map(({ _id, id, Brief, Author, Title, cover, image }) => {
           return (
             <Link to={`/post/${_id}`} key={id}>
               <div key={id} className="article-card">
-                <img src={cover} alt={Title} />
+                {cover && <img src={cover} alt={Title} />}
+                {image && <img src={image} alt={Title} />}
                 <h2>{Title}</h2>
                 <p>{Brief}</p>
                 <h6>{Author}</h6>

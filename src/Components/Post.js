@@ -97,7 +97,7 @@ const Main = (props) => {
           <span>{post.Author}</span>
         </h1>
         {post.cover && <img src={post.cover} alt="post" />}
-
+        {post.image && <img src={post.image} alt={post.title} />}
         <section className="postContainer-message">
           <div ref={el}>
             {useEffect(() => {
