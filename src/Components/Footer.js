@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Footer = () => {
+  const [writer, setWriter] = useState("");
+
+  const handleSearch = () => {
+    alert(writer);
+  };
   return (
     <>
       <footer className="app-footer">
         <div className="app-footer-lists">
           <h2>Writer's Corner</h2>
           <p>View only your favourite writer articles</p>
-          <ul>
-            <li>Eniola Alao</li>
-            <li>AyaiPiere Darlington</li>
-            <li>Gbenga Tolani</li>
-          </ul>
+          <form onSubmit={handleSearch}>
+            <input type="text" placeholder="Enter writer's username" required />
+          </form>
         </div>
 
         <div className="app-footer-social">

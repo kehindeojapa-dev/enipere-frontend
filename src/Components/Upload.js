@@ -69,7 +69,8 @@ const Upload = ({ props }) => {
       brief !== "" &&
       format !== "" &&
       ((docFile.name !== undefined && cover.name !== undefined) ||
-        imgFile.name !== undefined)
+        imgFile.name !== undefined) &&
+      author !== undefined
     ) {
       if (files.format === "doc") {
         formdata.append("doc", docFile);

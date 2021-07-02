@@ -1,6 +1,6 @@
 import React from "react";
 import Reactdom from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // Components Import
 
@@ -32,6 +32,9 @@ const App = () => {
         {/* <WriterPage /> */}
         {/* </Route> */}
         <Route path="/post/:id" children={<Post />}></Route>
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </>
   );

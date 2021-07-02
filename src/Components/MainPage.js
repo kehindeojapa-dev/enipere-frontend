@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "../axios";
 
 // Components Import
 import Header from "./Header";
 import Footer from "./Footer";
+import LoginSignUp from "./LoginSignUp";
 
 const MainPage = () => {
   const [posts, setPosts] = useState([]);
@@ -17,7 +18,11 @@ const MainPage = () => {
 
   return (
     <>
-      <Header />
+      <div className="app-header-twk1">
+        <Header />
+        <LoginSignUp />
+      </div>
+
       <section className="article-intro">
         <h2>Articles for you</h2>
       </section>

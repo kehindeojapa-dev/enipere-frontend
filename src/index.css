@@ -31,9 +31,17 @@ body {
 }
 
 .app-header .app-title {
-  font-size: 30px;
+  font-size: 2.5em;
+  font-weight: bold;
   margin-left: 15px;
   color: var(--color8);
+}
+.app-header-twk1 {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: var(--color5);
+  color: var(--color1);
 }
 
 .app-header .search-bar {
@@ -51,6 +59,41 @@ body {
   outline: none;
 }
 
+/* LoginSignUp */
+.login-signup {
+  text-align: right;
+  font-size: 1.2em;
+  word-spacing: 0.1em;
+  letter-spacing: 0.1em;
+  line-height: 1.8em;
+  /* width: 100%; */
+  /* margin: auto; */
+}
+
+.login-signup ul li {
+  list-style: none;
+}
+
+.nav-login {
+  margin-left: 0.5em;
+  border: 1px solid var(--color1);
+  padding: 0.1em 0.3em;
+  border-radius: 5px;
+  transition: all 0.3s ease-in;
+}
+.nav-signup {
+  margin-left: 0.5em;
+  border: 1px solid var(--color1);
+  padding: 0.1em 0.3em;
+  border-radius: 5px;
+  transition: all 0.2s ease-in;
+}
+.nav-login:hover,
+.nav-signup:hover {
+  background-color: var(--color3);
+  color: black;
+  opacity: 70%;
+}
 /* Article Card */
 .article-intro {
   width: 90%;
@@ -75,6 +118,13 @@ body {
   overflow: hidden;
   cursor: pointer;
   position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+.article-card:hover {
+  position: relative;
+  bottom: 2px;
+  box-shadow: 1px 1px 1px var(--color6);
 }
 
 .article-card img {
@@ -238,12 +288,16 @@ a {
   border-radius: 50%;
   width: 100px;
 }
+.post-container {
+  position: relative;
+}
 
 .writerPage-deleteBtn {
   position: absolute;
   top: 0;
   background-color: rgb(240, 64, 64);
   border: none;
+  border-top-left-radius: 5px;
   padding: 5px;
 }
 

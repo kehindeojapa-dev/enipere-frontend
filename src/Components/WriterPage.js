@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "../axios";
 import Header from "./Header";
@@ -62,20 +63,24 @@ const Posts = () => {
           {post.map(({ _id, id, Brief, Author, Title, cover, image }) => {
             const postID = _id;
             return (
-              <div key={id} className="article-card">
-                {cover && (
-                  <>
-                    <img src={cover} alt={Title} />
-                  </>
-                )}
-                {image && (
-                  <>
-                    <img src={image} alt={Title} />
-                  </>
-                )}
-                <h2>{Title}</h2>
-                <p>{Brief}</p>
-                <h6>{Author}</h6>
+              <div className="post-container">
+                <Link to={`/post/${_id}`}>
+                  <div key={id} className="article-card">
+                    {cover && (
+                      <>
+                        <img src={cover} alt={Title} />
+                      </>
+                    )}
+                    {image && (
+                      <>
+                        <img src={image} alt={Title} />
+                      </>
+                    )}
+                    <h2>{Title}</h2>
+                    <p>{Brief}</p>
+                    <h6>{Author}</h6>
+                  </div>
+                </Link>
                 <button
                   className="writerPage-deleteBtn"
                   onClick={() => handleDelete(postID)}
