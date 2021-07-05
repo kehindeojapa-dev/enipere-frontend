@@ -15,7 +15,7 @@ const Main = () => {
     if (username !== null && password !== null) {
       await axios
         .post("/users/login", {
-          username,
+          username: username.toLowerCase(),
           password,
         })
         .then((data) => {

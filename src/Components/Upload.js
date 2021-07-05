@@ -20,7 +20,7 @@ const Upload = ({ props }) => {
     brief: "",
     format: "",
   });
-  const author = props.username;
+  const author = props.username.toLowerCase();
 
   useEffect(() => {
     setFiles({ ...files, title, brief, format });

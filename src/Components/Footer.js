@@ -1,10 +1,20 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "../axios";
 
 const Footer = () => {
   const [writer, setWriter] = useState("");
-
-  const handleSearch = () => {
-    alert(writer);
+  const [writerStatus, setWriterStatus] = useState(false);
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const newWriter = writer.toLocaleLowerCase();
+    console.log(newWriter);
+    await axios
+      .get(`/server/postStatus/username/${newWriter}`)
+      .then((data) => {
+        setWriterStatus(data.data);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <>
@@ -12,9 +22,17 @@ const Footer = () => {
         <div className="app-footer-lists">
           <h2>Writer's Corner</h2>
           <p>View only your favourite writer articles</p>
-          <form onSubmit={handleSearch}>
-            <input type="text" placeholder="Enter writer's username" required />
+          <form onSubmit={handleSearch} className="app-footer-form">
+            <input
+              type="text"
+              placeholder="Enter writer's username"
+              required
+              value={writer}
+              onChange={(e) => setWriter(e.target.value)}
+            />
+            <input type="submit" value="view" />
           </form>
+          {writerStatus ? <Redirect to={`writer/${writer}`} /> : null}
         </div>
 
         <div className="app-footer-social">
@@ -24,7 +42,7 @@ const Footer = () => {
           </ul>
 
           <p>
-            &copy;2021, developed by{" "}
+            &copy;2021, developed by
             <a href="https:github.com/kehindeojapa-dev" target="yes">
               Kehinde's Creative
             </a>

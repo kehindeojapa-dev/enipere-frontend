@@ -34,6 +34,7 @@ const Posts = () => {
   const userID = useParams().id;
   const [userData, setUserData] = useState("");
   const [post, setPost] = useState([]);
+  const url = "http://localhost:3000/";
 
   const handleDelete = async (id) => {
     await axios.delete(`/server/post/${id}`);
@@ -56,6 +57,14 @@ const Posts = () => {
         <div className="writerPage-intro">
           <h2>{userData.username}</h2>
         </div>
+        <div className="writerPage-intro intro2">
+          <h2>Visit/Share your corner</h2>
+          <p>
+            <a
+              href={`${url}writer/${userData.username}`}
+            >{`${url}writer/${userData.username}`}</a>
+          </p>
+        </div>
 
         <Upload props={userData} />
 
@@ -63,9 +72,9 @@ const Posts = () => {
           {post.map(({ _id, id, Brief, Author, Title, cover, image }) => {
             const postID = _id;
             return (
-              <div className="post-container">
+              <div className="post-container" key={id}>
                 <Link to={`/post/${_id}`}>
-                  <div key={id} className="article-card">
+                  <div className="article-card">
                     {cover && (
                       <>
                         <img src={cover} alt={Title} />

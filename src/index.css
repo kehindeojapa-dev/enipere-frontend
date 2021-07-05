@@ -214,6 +214,32 @@ a {
   color: var(--color7);
 }
 
+.app-footer-form {
+  margin-top: 0.3em;
+  display: flex;
+  justify-content: center;
+}
+.app-footer-form input[type="text"] {
+  padding: 0.5em;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--color1);
+}
+.app-footer-form input[type="text"]:focus {
+  border: 1px solid var(--color6);
+}
+
+.app-footer-form input[type="submit"] {
+  padding: 0.5em;
+  margin-left: 0.3em;
+  border-radius: 5px;
+  border: 2px solid var(--color4);
+  background-color: var(--color3);
+  transition: all 0.3s ease;
+}
+.app-footer-form input[type="submit"]:hover {
+  background-color: var(--color5);
+}
 /* App-Login App-SignUp*/
 .app-login {
   display: grid;
@@ -284,6 +310,19 @@ a {
   align-items: center;
   color: var(--color8);
 }
+.intro2 {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.intro2 h2 {
+  font-size: 1.1em;
+  margin-right: 1em;
+}
+.intro2 a {
+  font-size: 1.2em;
+}
+
 .writerPage-intro img {
   border-radius: 50%;
   width: 100px;
@@ -485,4 +524,18 @@ a {
 .commentItem-message {
   margin-left: 0.5em;
   font-style: italic;
+}
+
+/* Writer Corner */
+.writer-corner {
+  display: grid;
+  place-items: center;
+  margin-bottom: 1em;
+}
+.writer-corner h1 {
+  color: var(--color5);
+}
+.writer-corner h1 span {
+  color: var(--color8);
+  font-size: 1.2em;
 }

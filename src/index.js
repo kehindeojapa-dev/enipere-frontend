@@ -8,6 +8,7 @@ import Main from "./Components/MainPage";
 import Login from "./Components/WriterLogin";
 import Post from "./Components/Post";
 import WriterPage from "./Components/WriterPage";
+import WriterCorner from "./Components/WriterCorner";
 import SignUp from "./Components/WriterSignup";
 //Stylesheet
 import "./index.css";
@@ -28,9 +29,7 @@ const App = () => {
           <SignUp />
         </Route>
         <Route path="/writerPage/:id" children={<WriterPage />}></Route>
-        {/* <Route path="/writerPage"> */}
-        {/* <WriterPage /> */}
-        {/* </Route> */}
+        <Route exact path="/writer/:id" children={<WriterCorner />}></Route>
         <Route path="/post/:id" children={<Post />}></Route>
         <Route path="*">
           <Redirect to="/" />
