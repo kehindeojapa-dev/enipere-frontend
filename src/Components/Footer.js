@@ -8,7 +8,6 @@ const Footer = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     const newWriter = writer.toLocaleLowerCase();
-    console.log(newWriter);
     await axios
       .get(`/server/postStatus/username/${newWriter}`)
       .then((data) => {
