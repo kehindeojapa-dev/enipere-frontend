@@ -35,14 +35,14 @@ const Footer = () => {
         </div>
 
         <div className="app-footer-social">
-          <ul>
+          {/* <ul>
             <li>Facebook</li>
             <li>Twitter</li>
-          </ul>
+          </ul> */}
 
           <p>
             &copy;2021, developed by
-            <a href="https:github.com/kehindeojapa-dev" target="yes">
+            <a href="https://github.com/kehindeojapa-dev" target="yes">
               Kehinde's Creative
             </a>
           </p>
