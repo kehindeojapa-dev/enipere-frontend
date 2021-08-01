@@ -34,7 +34,7 @@ const Posts = () => {
   const userID = useParams().id;
   const [userData, setUserData] = useState("");
   const [post, setPost] = useState([]);
-  const url = "http://localhost:3000/";
+  const url = "enipere.netlify.app/";
 
   const handleDelete = async (id) => {
     await axios.delete(`/server/post/${id}`);

@@ -23,7 +23,7 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   position: relative;
   min-height: 100vh;
-  padding-bottom: 3em;
+  /* padding-bottom: 7.5em; */
 }
 
 /* App Header */
@@ -111,7 +111,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em;
-  margin-bottom: 1em;
+  position: relative;
+  padding-bottom: 170px;
 }
 
 .article-card {
@@ -132,6 +133,8 @@ body {
 
 .article-card img {
   width: 100%;
+  height: 170px;
+  object-fit: cover;
 }
 
 .article-card h2 {
@@ -178,11 +181,11 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1em 1em;
   width: 100%;
-  /* position: absolute; */
-  /* bottom: 0; */
+  position: absolute;
+  bottom: 0;
+  height: 150px;
 }
 .app-footer li {
   list-style: none;
@@ -198,6 +201,7 @@ a {
   color: var(--color1);
   letter-spacing: 2px;
   margin-top: -10px;
+  text-align: center;
 }
 .app-footer-lists li {
   font-size: 18px;
@@ -256,6 +260,7 @@ a {
   box-shadow: 2px 2px 5px 1px var(--color8);
   margin-top: 2em;
   border-radius: 5px;
+  /* padding-bottom: 7.5em; */
 }
 
 .app-login form {
@@ -428,14 +433,15 @@ a {
   font-size: 10px;
   color: var(--color6);
   letter-spacing: 0.1em;
+  margin-left: 0.3em;
 }
 
 .postContainer img {
   display: block;
-  width: 80%;
-  height: 250px;
+  width: 100%;
+  height: auto;
   margin: auto;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .postContainer-message {
@@ -454,6 +460,8 @@ a {
   border-radius: 5px;
   padding: 0.5em 0.5em;
   box-shadow: 0px 5px 10px 0px var(--color5);
+  position: relative;
+  padding-bottom: 160px;
 }
 
 .commentBtn {
@@ -505,6 +513,11 @@ a {
   gap: 0.5em;
 }
 
+@media (max-width: 500px) {
+  .commentForm .row1 {
+    grid-template-columns: 1fr;
+  }
+}
 .commentItem {
   width: 90%;
   margin: auto;
